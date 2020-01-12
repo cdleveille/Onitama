@@ -12,13 +12,15 @@ namespace Onitama
         public string symbol;
         public int pos;
 
+        // Create a new pawn
         public Pawn(string symbol)
         {
-            this.isCaptured = false;
             this.symbol = symbol;
+            this.isCaptured = false;
         }
 
-        public String toString()
+        // Print the symbol of this pawn
+        public override String ToString()
         {
             return symbol;
         }

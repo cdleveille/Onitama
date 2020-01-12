@@ -10,7 +10,7 @@ namespace Onitama
     {
         static void Main(string[] args)
         {
-            Game game = new Game(new Player("P1", "x"), new Player("P2", "o"));
+            Game game = new Game(new HumanPlayer("P1", "x"), new HumanPlayer("P2", "o"));
             game.Start();
         }
     }
