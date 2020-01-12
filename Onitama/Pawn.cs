@@ -8,15 +8,19 @@ namespace Onitama
 {
     class Pawn
     {
-        public Boolean isMaster, isCaptured;
-        public char symbol;
+        public bool isMaster, isCaptured;
+        public string symbol;
         public int pos;
 
-        public Pawn(Boolean isMaster, char symbol)
+        public Pawn(string symbol)
         {
-            this.isMaster = isMaster;
             this.isCaptured = false;
             this.symbol = symbol;
+        }
+
+        public String toString()
+        {
+            return symbol;
         }
     }
 }
