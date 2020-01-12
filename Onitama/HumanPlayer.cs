@@ -26,13 +26,13 @@ namespace Onitama
             Console.Write("Select Pawn: { ");
             for (int i = 0; i < activePawnPositions.Count(); i++)
             {
-                if (i == activePawnPositions.Count() - 1)
+                if (i != activePawnPositions.Count() - 1)
                 {
-                    Console.WriteLine(activePawnPositions.ElementAt(i) + " }");
+                    Console.Write(activePawnPositions.ElementAt(i) + ", ");
                 }
                 else
                 {
-                    Console.Write(activePawnPositions.ElementAt(i) + ", ");
+                    Console.WriteLine(activePawnPositions.ElementAt(i) + " }");
                 }
                 
             }
