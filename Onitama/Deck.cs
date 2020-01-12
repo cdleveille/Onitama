@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Onitama
 {
-    class Program
+    class Deck
     {
-        static void Main(string[] args)
+        public MoveCard[] cards;
+
+        public Deck()
         {
 
         }

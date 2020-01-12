@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Onitama
 {
-    class Program
+    abstract class Player
     {
-        static void Main(string[] args)
-        {
+        public string name;
+        public int[][] moveCards;
 
-        }
     }
 }

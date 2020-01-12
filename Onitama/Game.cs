@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Onitama
 {
-    class Program
+    class Game
     {
-        static void Main(string[] args)
-        {
-
-        }
+        private int[] board;
+        
     }
 }
