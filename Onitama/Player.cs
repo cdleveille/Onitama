@@ -8,24 +8,33 @@ namespace Onitama
 {
     abstract class Player
     {
-        public string name;
-        public string symbol;
-        public MoveCard[] cards;
-        public Pawn[] pawns;
+        private string name;
+        private string symbol;
+        private List<MoveCard> cards;
+        private List<Pawn> pawns;
 
         // Create a new player
         public Player (string name, string symbol)
         {
             this.name = name;
             this.symbol = symbol.ToLower().Substring(0, 1);
-            this.cards = new MoveCard[2];
+            this.cards = new List<MoveCard>();
             CreatePawns();
         }
+
+        // Ask the player which pawn will be moved
+        public abstract Pawn GetPawnToMove(Game game);
+
+        // Ask the player which move card will be used
+        public abstract MoveCard GetMoveCardToUse(Game game, Player playerToMove);
+
+        // Ask the player where the selected pawn will be moved to based on the selected move card
+        public abstract int GetPawnToMoveDestination(Game game, List<int> validDestinations);
 
         // Create five new pawns for this player
         private void CreatePawns()
         {
-            this.pawns = new Pawn[] {
+            this.pawns = new List<Pawn> {
                 new Pawn(this.symbol),
                 new Pawn(this.symbol),
                 new Pawn(this.symbol),
@@ -39,7 +48,7 @@ namespace Onitama
         {
             foreach (Pawn pawn in pawns)
             {
-                if (pawn.pos == pos && !pawn.isCaptured)
+                if (pawn.GetPos() == pos && !pawn.GetIsCaptured())
                 {
                     return true;
                 }
@@ -52,7 +61,7 @@ namespace Onitama
         {
             foreach (Pawn pawn in pawns)
             {
-                if (pawn.pos == pos)
+                if (pawn.GetPos() == pos)
                 {
                     return pawn;
                 }
@@ -60,24 +69,44 @@ namespace Onitama
             return null;
         }
 
-        // Return the number of active (uncaptured) pawns the player has
-        public int CountActivePawns()
+        public string GetName()
         {
-            int count = 0;
-            foreach (Pawn pawn in pawns)
-            {
-                if (!pawn.isCaptured)
-                {
-                    count++;
-                }
-            }
-            return count;
+            return this.name;
         }
 
-        // Ask the player which pawn will be moved
-        public abstract Pawn GetPawnToMove(Game game);
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
 
-        // Ask the player which move card will be used
-        public abstract MoveCard GetMoveCardToUse(Game game);
+        public string GetSymbol()
+        {
+            return this.symbol;
+        }
+
+        public void SetSymbol(string symbol)
+        {
+            this.symbol = symbol;
+        }
+
+        public List<Pawn> GetPawns()
+        {
+            return this.pawns;
+        }
+
+        public void SetPawns(List<Pawn> pawns)
+        {
+            this.pawns = pawns;
+        }
+
+        public List<MoveCard> GetCards()
+        {
+            return this.cards;
+        }
+
+        public void SetCards(List<MoveCard> cards)
+        {
+            this.cards = cards;
+        }
     }
 }

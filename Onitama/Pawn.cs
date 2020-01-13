@@ -8,9 +8,9 @@ namespace Onitama
 {
     class Pawn
     {
-        public bool isMaster, isCaptured;
-        public string symbol;
-        public int pos;
+        private int pos;
+        private bool isMaster, isCaptured;
+        private string symbol;
 
         // Create a new pawn
         public Pawn(string symbol)
@@ -19,10 +19,44 @@ namespace Onitama
             this.isCaptured = false;
         }
 
-        // Print the symbol of this pawn
-        public override String ToString()
+        public int GetPos()
         {
-            return symbol;
+            return this.pos;
+        }
+
+        public void SetPos(int pos)
+        {
+            this.pos = pos;
+        }
+
+        public bool GetIsMaster()
+        {
+            return this.isMaster;
+        }
+
+        public void SetIsMaster(bool isMaster)
+        {
+            this.isMaster = isMaster;
+        }
+
+        public bool GetIsCaptured()
+        {
+            return this.isCaptured;
+        }
+
+        public void SetIsCaptured(bool isCaptured)
+        {
+            this.isCaptured = isCaptured;
+        }
+
+        public string GetSymbol()
+        {
+            return this.symbol;
+        }
+
+        public void SetSymbol(string symbol)
+        {
+            this.symbol = symbol;
         }
     }
 }

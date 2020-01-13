@@ -10,8 +10,15 @@ namespace Onitama
     {
         static void Main(string[] args)
         {
-            Game game = new Game(new HumanPlayer("P1", "x"), new HumanPlayer("P2", "o"));
-            game.Start();
+            while (true)
+            {
+                // Create and start a new Game
+                Game game = new Game(new HumanPlayer("P1", "x"), new HumanPlayer("P2", "o"));
+                game.Start();
+
+                Console.Write("Press ENTER to play again...");
+                Console.ReadLine();
+            }
         }
     }
 }

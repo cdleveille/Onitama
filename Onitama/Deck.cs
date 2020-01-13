@@ -8,7 +8,7 @@ namespace Onitama
 {
     class Deck
     {
-        public List<MoveCard> cards;
+        private List<MoveCard> cards;
         private Random rng;
         private int top;
 
@@ -49,6 +49,36 @@ namespace Onitama
         {
             this.cards = this.cards.OrderBy(a => rng.Next()).ToList();
             this.top = 0;
+        }
+
+        public List<MoveCard> GetCards()
+        {
+            return this.cards;
+        }
+
+        public void SetCards(List<MoveCard> cards)
+        {
+            this.cards = cards;
+        }
+
+        public Random GetRng()
+        {
+            return this.rng;
+        }
+
+        public void SetRng(Random rng)
+        {
+            this.rng = rng;
+        }
+
+        public int GetTop()
+        {
+            return this.top;
+        }
+
+        public void SetTop(int top)
+        {
+            this.top = top;
         }
     }
 }
