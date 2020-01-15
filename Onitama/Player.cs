@@ -69,6 +69,70 @@ namespace Onitama
             return null;
         }
 
+        public int Minimax(List<Pawn> node, int depth, bool isMaximizingPlayer)
+        {
+            if (depth == 0) // or is terminal node
+            {
+                return EvaluateBoardstate(node);
+            }
+            else
+            {
+                int value;
+                if (isMaximizingPlayer)
+                {
+                    value = -9999;
+                    
+                }
+                else
+                {
+                    value = 9999;
+                }
+            }
+
+            return -1;
+        }
+
+        public int EvaluateBoardstate(List<Pawn> pawns)
+        {
+            int score = 0;
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                Pawn pawn = pawns[i];
+                int shrineSquare = i < pawns.Count / 2 ? 2 : 22;
+                if (!pawn.GetIsCaptured())
+                {
+                    if (pawn.GetSymbol() == this.GetSymbol())
+                    {
+                        if (pawn.GetIsMaster())
+                        {
+                            score += 10;
+
+                            if (pawn.GetPos() == shrineSquare)
+                            {
+                                score += 5;
+                            }
+                        }
+                        else
+                        {
+                            score += 1;
+                        }
+                    }
+                    else
+                    {
+                        if (pawn.GetIsMaster())
+                        {
+                            score -= 10;
+                        }
+                        else
+                        {
+                            score -= 1;
+                        }
+                    }
+                }
+            }
+            return score;
+        }
+
         public string GetName()
         {
             return this.name;

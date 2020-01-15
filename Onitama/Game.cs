@@ -172,7 +172,7 @@ namespace Onitama
             int yFlip = this.isP1Turn ? -1 : 1;
 
             // Populate destinations list based on the selected move card
-            for (int i = 0; i < moveCardToUse.GetMoveDeltas().Length; i++)
+            for (int i = 0; i < moveCardToUse.GetMoveDeltas().Count; i++)
             {
                 candidateDestinations.Add(pawnInitialPos + moveCardToUse.GetMoveDeltas()[i].GetDeltaX() + ((moveCardToUse.GetMoveDeltas()[i].GetDeltaY() * 5) * yFlip));
             }
@@ -321,6 +321,51 @@ namespace Onitama
             nameLineP1 += this.p1.GetCards()[1].GetName();
             Console.WriteLine(nameLineP1);
             Console.WriteLine();
+        }
+
+        public List<Pawn> GetBoardstate()
+        {
+            return this.p1.GetPawns().Concat(this.p2.GetPawns()).ToList();
+        }
+
+        public List<TreeNode> BuildGameTree(int depth, int maxDepth)
+        {
+            List<TreeNode> gameTree = new List<TreeNode>();
+            List<Pawn> boardstate = GetBoardstate();
+
+            if (depth < maxDepth)
+            {
+                List<List<Pawn>> childBoardstates;
+            }
+
+            return gameTree;
+        }
+
+        private List<List<Pawn>> GetChildBoardstates(List<Pawn> boardstate, string playerToMoveSymbol)
+        {
+            
+
+            return null;
+        }
+
+        public Player GetP1()
+        {
+            return this.p1;
+        }
+
+        public void SetP1(Player p1)
+        {
+            this.p1 = p1;
+        }
+
+        public Player GetP2()
+        {
+            return this.p2;
+        }
+
+        public void SetP2(Player p2)
+        {
+            this.p2 = p2;
         }
     }
 }

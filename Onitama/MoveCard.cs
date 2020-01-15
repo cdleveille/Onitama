@@ -9,99 +9,100 @@ namespace Onitama
     class MoveCard
     {
         private string name;
-        private int[] moves;
-        private MoveDelta[] moveDeltas;
+        private List<int> moves;
+        private List<MoveDelta> moveDeltas;
 
         // Create a new move card
-        public MoveCard(string name, int[] moves)
+        public MoveCard(string name, List<int> moves)
         {
             this.name = name.ToUpper();
             this.moves = moves;
             this.moveDeltas = GetMoveDeltas(moves);
         }
 
-        private MoveDelta[] GetMoveDeltas(int[] moves)
+        // Convert each move to a delta-X, delta-Y coordinate pair
+        private List<MoveDelta> GetMoveDeltas(List<int> moves)
         {
-            MoveDelta[] moveDeltas = new MoveDelta[moves.Length];
+            List<MoveDelta> moveDeltas = new List<MoveDelta>();
 
-            for (int i = 0; i < moves.Length; i++)
+            foreach (int move in moves)
             {
-                switch (moves[i])
+                switch (move)
                 {
                     case 0:
-                        moveDeltas[i] = new MoveDelta(-2, 2);
+                        moveDeltas.Add(new MoveDelta(-2, 2));
                         break;
                     case 1:
-                        moveDeltas[i] = new MoveDelta(-1, 2);
+                        moveDeltas.Add(new MoveDelta(-1, 2));
                         break;
                     case 2:
-                        moveDeltas[i] = new MoveDelta(0, 2);
+                        moveDeltas.Add(new MoveDelta(0, 2));
                         break;
                     case 3:
-                        moveDeltas[i] = new MoveDelta(1, 2);
+                        moveDeltas.Add(new MoveDelta(1, 2));
                         break;
                     case 4:
-                        moveDeltas[i] = new MoveDelta(2, 2);
+                        moveDeltas.Add(new MoveDelta(2, 2));
                         break;
                     case 5:
-                        moveDeltas[i] = new MoveDelta(-2, 1);
+                        moveDeltas.Add(new MoveDelta(-2, 1));
                         break;
                     case 6:
-                        moveDeltas[i] = new MoveDelta(-1, 1);
+                        moveDeltas.Add(new MoveDelta(-1, 1));
                         break;
                     case 7:
-                        moveDeltas[i] = new MoveDelta(0, 1);
+                        moveDeltas.Add(new MoveDelta(0, 1));
                         break;
                     case 8:
-                        moveDeltas[i] = new MoveDelta(1, 1);
+                        moveDeltas.Add(new MoveDelta(1, 1));
                         break;
                     case 9:
-                        moveDeltas[i] = new MoveDelta(2, 1);
+                        moveDeltas.Add(new MoveDelta(2, 1));
                         break;
                     case 10:
-                        moveDeltas[i] = new MoveDelta(-2, 0);
+                        moveDeltas.Add(new MoveDelta(-2, 0));
                         break;
                     case 11:
-                        moveDeltas[i] = new MoveDelta(-1, 0);
+                        moveDeltas.Add(new MoveDelta(-1, 0));
                         break;
                     case 12:
-                        moveDeltas[i] = new MoveDelta(0, 0);
+                        moveDeltas.Add(new MoveDelta(0, 0));
                         break;
                     case 13:
-                        moveDeltas[i] = new MoveDelta(1, 0);
+                        moveDeltas.Add(new MoveDelta(1, 0));
                         break;
                     case 14:
-                        moveDeltas[i] = new MoveDelta(2, 0);
+                        moveDeltas.Add(new MoveDelta(2, 0));
                         break;
                     case 15:
-                        moveDeltas[i] = new MoveDelta(-2, -1);
+                        moveDeltas.Add(new MoveDelta(-2, -1));
                         break;
                     case 16:
-                        moveDeltas[i] = new MoveDelta(-1, -1);
+                        moveDeltas.Add(new MoveDelta(-1, -1));
                         break;
                     case 17:
-                        moveDeltas[i] = new MoveDelta(0, -1);
+                        moveDeltas.Add(new MoveDelta(0, -1));
                         break;
                     case 18:
-                        moveDeltas[i] = new MoveDelta(1, -1);
+                        moveDeltas.Add(new MoveDelta(1, -1));
                         break;
                     case 19:
-                        moveDeltas[i] = new MoveDelta(2, -1);
+                        moveDeltas.Add(new MoveDelta(2, -1));
                         break;
                     case 20:
-                        moveDeltas[i] = new MoveDelta(-2, -2);
+                        moveDeltas.Add(new MoveDelta(-2, -2));
                         break;
                     case 21:
-                        moveDeltas[i] = new MoveDelta(-1, -2);
+                        moveDeltas.Add(new MoveDelta(-1, -2));
                         break;
                     case 22:
-                        moveDeltas[i] = new MoveDelta(0, -2);
+                        moveDeltas.Add(new MoveDelta(0, -2));
                         break;
                     case 23:
-                        moveDeltas[i] = new MoveDelta(1, -2);
+                        moveDeltas.Add(new MoveDelta(1, -2));
                         break;
                     case 24:
-                        moveDeltas[i] = new MoveDelta(2, -2);
+                        moveDeltas.Add(new MoveDelta(2, -2));
                         break;
                     default:
                         break;
@@ -113,7 +114,7 @@ namespace Onitama
         // Return true if this move card has a move at the given position, false if not
         public bool HasMoveAt(int pos)
         {
-            foreach (int move in moves)
+            foreach (int move in this.moves)
             {
                 if (move == pos)
                 {
@@ -147,7 +148,7 @@ namespace Onitama
                 pos -= 20;
             }
 
-            foreach (int move in moves)
+            foreach (int move in this.moves)
             {
                 if (move == pos)
                 {
@@ -167,22 +168,22 @@ namespace Onitama
             this.name = name;
         }
 
-        public int[] GetMoves()
+        public List<int> GetMoves()
         {
             return this.moves;
         }
 
-        public void SetMoves(int[] moves)
+        public void SetMoves(List<int> moves)
         {
             this.moves = moves;
         }
 
-        public MoveDelta[] GetMoveDeltas()
+        public List<MoveDelta> GetMoveDeltas()
         {
             return this.moveDeltas;
         }
 
-        public void SetMoveDeltas(MoveDelta[] moveDeltas)
+        public void SetMoveDeltas(List<MoveDelta> moveDeltas)
         {
             this.moveDeltas = moveDeltas;
         }

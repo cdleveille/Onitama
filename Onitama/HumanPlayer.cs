@@ -14,6 +14,8 @@ namespace Onitama
         // Generate a list of uncaptured pawns and ask the player to choose one to move
         public override Pawn GetPawnToMove(Game game)
         {
+            int value = EvaluateBoardstate(game.GetBoardstate());
+
             List<int> activePawnPositions = new List<int>();
             for (int i = 0; i < this.GetPawns().Count; i++)
             {
